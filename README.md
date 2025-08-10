@@ -1,9 +1,9 @@
 # Multi-Agent EV Valuation — Dissertation Project
 
-## 🚨 Version Disclaimer
-This project has been tested with **Python 3.10** and **Python 3.11**.  
-Some dependencies (e.g., AutoGluon) are **not compatible** with Python 3.12+ at the time of writing.  
-If you are on a newer version (e.g., Python 3.13), you may need to create a virtual environment with Python 3.10 or 3.11 before installing dependencies.
+
+## Version Disclaimer
+This project is tested and supported on **Python 3.10** only.
+AutoGluon is not compatible with Python 3.12 or newer for this setup.
 
 ---
 
@@ -20,7 +20,7 @@ The actual checkpoint for Agent 1 (AutoGluon ensemble) is large (~3 GB) and is s
 ```
 Hari_Dissertation/
 │
-├── agents/ # Individual agent training/building code (for reference/retraining)
+├── agents/ # Individual agent training/building code (for reference/retraining only - not needed for running the actual project)
 │   ├── agent1.ipynb
 │   ├── Agent2.ipynb
 │   ├── agent3.ipynb
@@ -35,32 +35,31 @@ Hari_Dissertation/
 
 ## Setup
 
-1. **Download the Multi-Agent Core Files**
-   To get started, download the zipped core files containing the main scripts:  
-   [**Download multi_agent_core_files.zip**](https://github.com/S-Hari-B/Hari_Dissertation/raw/main/multi_agent_core_files.zip)  
+1. **Create a new Conda environment with Python 3.10**
+   ```bash
+   conda create -n ev_agents python=3.10 -y
+   conda activate ev_agents
+   ```
+
+2. **Download the Multi-Agent Core Files**
+   To get started, download the zipped core files containing the main scripts:
+   **[**Download multi_agent_core_files.zip**](https://github.com/S-Hari-B/Hari_Dissertation/raw/main/multi_agent_core_files.zip)**  
    Extract the contents into the repository root.
 
-2. **Install dependencies**
-   Run:
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
-   (This includes all required libraries in compatible versions.)
 
-3. **Configure environment variables**
+4. **Configure environment variables**
    Create a `.env` file at the repository root based on `.env.example`:
    ```env
    AV_KEY=YOUR_ALPHA_VANTAGE_KEY
    OPENAI_API_KEY=YOUR_OPENAI_KEY
    ```
 
-4. **Obtain the Agent 1 model checkpoint**
-   Download the pre-trained model from Google Drive:  
-   [Download Agent 1 Model](https://drive.google.com/file/d/1ncPJ9qA7HqvRZmGf5oc1ogy60kRxvvjU/view?usp=sharing)  
-   After downloading:
-   - Unzip or place the **entire** predictor folder at the path `./agent1_model` so that `./agent1_model/learner.pkl` and related files exist.
-   - Do not rename internal files. Only the top-level directory should be `agent1_model`.
-
+5. **Obtain the Agent 1 model checkpoint**
+   Download the pre-trained model from Google Drive, then place it at `./agent1_model` as described below.
 ## Quick Start
 Run the command-line tool and choose tickers from the predefined universe.
 ```bash
@@ -75,9 +74,9 @@ The script will:
 ## Notes
 - Alpha Vantage free tier is restrictive. Use a paid tier or run with fewer tickers to avoid hitting the quota.
 - The `.env` file is read via `python-dotenv`.
-- The OpenAI model used by default in the code is `gpt-4o-mini`. You can change `model=` in the relevant functions if needed.
+- The OpenAI model used by default in the code is `gpt-4o-mini`. You can change `model=` in the relevant functions if needed inside unified_core.py.
 - The first FinBERT run will download `yiyanghkust/finbert-tone` from Hugging Face to your cache.
-- This project is for academic demonstration only. It does not provide financial advice.
+- This project is for academic demonstration only. It does not provide real financial advice.
 
 ## License
 This repository contains academic research code. Third-party models and APIs are used under their respective licenses.
