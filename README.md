@@ -33,17 +33,22 @@ Hari_Dissertation/
 
 ## Setup
 
-1. **Install dependencies**
+1. **Download the Multi-Agent Core Files**
+   To get started, download the zipped core files containing the main scripts:  
+   [**Download multi_agent_core_files.zip**](https://github.com/S-Hari-B/Hari_Dissertation/raw/main/multi_agent_core_files.zip)  
+   Extract the contents into the repository root.
+
+2. **Install dependencies**
    Install required libraries manually or via your preferred method (pip/conda).
 
-2. **Configure environment variables**
+3. **Configure environment variables**
    Create a `.env` file at the repository root based on `.env.example`:
    ```env
    AV_KEY=YOUR_ALPHA_VANTAGE_KEY
    OPENAI_API_KEY=YOUR_OPENAI_KEY
    ```
 
-3. **Obtain the Agent 1 model checkpoint**
+4. **Obtain the Agent 1 model checkpoint**
    Download the pre‑trained model from Google Drive:  
    [Download Agent 1 Model](https://drive.google.com/file/d/1ncPJ9qA7HqvRZmGf5oc1ogy60kRxvvjU/view?usp=sharing)  
    After downloading:
