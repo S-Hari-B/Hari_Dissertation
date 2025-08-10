@@ -1,0 +1,16 @@
+# To install all dependencies, run:
+# pip install -r requirements.txt
+#
+# Python version note:
+# This project requires Python 3.10 or 3.11 for AutoGluon compatibility.
+# Install AutoGluon with:
+# pip install autogluon.tabular
+
+python-dotenv
+numpy
+pandas
+requests
+torch
+transformers
+openai
+autogluon.tabular

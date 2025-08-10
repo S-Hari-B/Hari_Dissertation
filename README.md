@@ -1,13 +1,20 @@
-# Multi‑Agent EV Valuation — Dissertation Project
+# Multi-Agent EV Valuation — Dissertation Project
+
+## 🚨 Version Disclaimer
+This project has been tested with **Python 3.10** and **Python 3.11**.  
+Some dependencies (e.g., AutoGluon) are **not compatible** with Python 3.12+ at the time of writing.  
+If you are on a newer version (e.g., Python 3.13), you may need to create a virtual environment with Python 3.10 or 3.11 before installing dependencies.
+
+---
 
 ## Overview
-This repository contains the runnable code for my dissertation project, a modular multi‑agent pipeline for short‑horizon valuation of electric‑vehicle companies. The system combines:
+This repository contains the runnable code for my dissertation project, a modular multi-agent pipeline for short-horizon valuation of electric-vehicle companies. The system combines:
 1) Fundamentals forecasting (Agent 1),
-2) Expert‑news sentiment using FinBERT (Agent 2),
-3) Public‑news sentiment using a GPT model (Agent 3),
+2) Expert-news sentiment using FinBERT (Agent 2),
+3) Public-news sentiment using a GPT model (Agent 3),
 4) A unified aggregation and ranking module (Agent 4).
 
-The actual checkpoint for Agent 1 (AutoGluon ensemble) is large (~3 GB) and is stored outside the repository. Instructions to obtain it are below.
+The actual checkpoint for Agent 1 (AutoGluon ensemble) is large (~3 GB) and is stored outside the repository. Instructions to obtain it are below.
 
 ## Repository Layout
 ```
@@ -20,16 +27,11 @@ Hari_Dissertation/
 │   └── agent4.ipynb
 │
 ├── unified_cli.py # Main CLI entry point for running the full system
-├── unified_core_final.py # Core unified pipeline logic
+├── unified_core.py # Core unified pipeline logic
 ├── README.md # Project documentation
+├── requirements.txt # Dependency list with install command
 └── .env.example # Environment variables example
 ```
-
-## Prerequisites
-- Python 3.10 or 3.11
-- Alpha Vantage API key (for fundamentals and headline metadata)
-- OpenAI API key (for GPT‑based public sentiment scoring)
-- Optional CUDA GPU for faster FinBERT inference
 
 ## Setup
 
@@ -39,7 +41,11 @@ Hari_Dissertation/
    Extract the contents into the repository root.
 
 2. **Install dependencies**
-   Install required libraries manually or via your preferred method (pip/conda).
+   Run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+   (This includes all required libraries in compatible versions.)
 
 3. **Configure environment variables**
    Create a `.env` file at the repository root based on `.env.example`:
@@ -48,15 +54,15 @@ Hari_Dissertation/
    OPENAI_API_KEY=YOUR_OPENAI_KEY
    ```
 
-4. **Obtain the Agent 1 model checkpoint**
-   Download the pre‑trained model from Google Drive:  
+4. **Obtain the Agent 1 model checkpoint**
+   Download the pre-trained model from Google Drive:  
    [Download Agent 1 Model](https://drive.google.com/file/d/1ncPJ9qA7HqvRZmGf5oc1ogy60kRxvvjU/view?usp=sharing)  
    After downloading:
    - Unzip or place the **entire** predictor folder at the path `./agent1_model` so that `./agent1_model/learner.pkl` and related files exist.
-   - Do not rename internal files. Only the top‑level directory should be `agent1_model`.
+   - Do not rename internal files. Only the top-level directory should be `agent1_model`.
 
 ## Quick Start
-Run the command‑line tool and choose tickers from the predefined universe.
+Run the command-line tool and choose tickers from the predefined universe.
 ```bash
 python unified_cli.py
 ```
@@ -68,10 +74,10 @@ The script will:
 
 ## Notes
 - Alpha Vantage free tier is restrictive. Use a paid tier or run with fewer tickers to avoid hitting the quota.
-- The `.env` file is read via `python‑dotenv`.
+- The `.env` file is read via `python-dotenv`.
 - The OpenAI model used by default in the code is `gpt-4o-mini`. You can change `model=` in the relevant functions if needed.
 - The first FinBERT run will download `yiyanghkust/finbert-tone` from Hugging Face to your cache.
 - This project is for academic demonstration only. It does not provide financial advice.
 
 ## License
-This repository contains academic research code. Third‑party models and APIs are used under their respective licenses.
+This repository contains academic research code. Third-party models and APIs are used under their respective licenses.
