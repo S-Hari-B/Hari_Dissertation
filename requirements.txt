@@ -14,3 +14,8 @@ requests
 torch
 transformers
 openai
+scikit-learn==1.5.1
+lightgbm==4.5.0
+xgboost==2.1.1
+catboost==1.2.7
+fastai==2.7.18
