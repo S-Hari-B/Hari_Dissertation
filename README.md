@@ -59,7 +59,8 @@ Hari_Dissertation/
    ```
 
 5. **Obtain the Agent 1 model checkpoint**
-   Download the pre-trained model from Google Drive, then place it at `./agent1_model` as described below.
+   Download the pre-trained model from Google Drive: [Agent 1 Model Checkpoint](https://drive.google.com/file/d/1ncPJ9qA7HqvRZmGf5oc1ogy60kRxvvjU/view?usp=sharing)  
+   Place the extracted folder at `./agent1_model` as described below.
 ## Quick Start
 Run the command-line tool and choose tickers from the predefined universe.
 ```bash
